@@ -1,0 +1,61 @@
+version: "3.8"
+services:
+  brain:
+    image: "brain.web3signer-prater.dnp.dappnode.eth:0.1.13"
+    build:
+      context: brain
+    environment:
+      - LOG_LEVEL=debug
+    restart: unless-stopped
+    volumes:
+      - "brain_data:/app/data"
+  web3signer:
+    image: "web3signer.web3signer-prater.dnp.dappnode.eth:0.1.13"
+    healthcheck:
+      test: >-
+        curl -H 'Host: web3signer.web3signer-prater.dappnode'
+        http://localhost:9000/healthcheck
+      interval: 5s
+      timeout: 5s
+      retries: 100
+    depends_on:
+      flyway:
+        condition: service_completed_successfully
+    security_opt:
+      - "seccomp:unconfined"
+    build:
+      context: web3signer
+      dockerfile: Dockerfile
+      args:
+        UPSTREAM_VERSION: 23.9.1
+    environment:
+      EXTRA_OPTS: ""
+    volumes:
+      - "web3signer_data:/data"
+    restart: unless-stopped
+  flyway:
+    build:
+      context: flyway
+      dockerfile: Dockerfile
+      args:
+        UPSTREAM_VERSION: 23.9.1
+    depends_on:
+      postgres:
+        condition: service_started
+    image: "flyway.web3signer-prater.dnp.dappnode.eth:0.1.13"
+    restart: on-failure
+  postgres:
+    image: "postgres.web3signer-prater.dnp.dappnode.eth:0.1.13"
+    build:
+      context: postgres
+      dockerfile: Dockerfile
+      args:
+        UPSTREAM_VERSION: 23.9.1
+    user: postgres
+    volumes:
+      - "postgres_data:/var/lib/postgresql/data"
+    restart: unless-stopped
+volumes:
+  brain_data: {}
+  web3signer_data: {}
+  postgres_data: {}

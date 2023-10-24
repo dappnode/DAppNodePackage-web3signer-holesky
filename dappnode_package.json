@@ -1,0 +1,60 @@
+{
+  "name": "web3signer-prater.dnp.dappnode.eth",
+  "version": "0.1.25",
+  "upstreamVersion": "23.9.1",
+  "architectures": ["linux/amd64"],
+  "upstreamRepo": "ConsenSys/web3signer",
+  "mainService": "web3signer",
+  "shortDescription": "Remote signer + slashing protection database + User interface to import validator keystores",
+  "description": "Web3Signer is an open-source signing service developed under the Apache 2.0 license and written in Java. Web3Signer is capable of signing on multiple platforms using private keys stored in an external vault, or encrypted on a disk.",
+  "type": "service",
+  "author": "DAppNode Association <admin@dappnode.io> (https://github.com/dappnode)",
+  "contributors": [
+    "mgarciate <mgarciate@gmail.com> (https://github.com/mgarciate)",
+    "pablomendezroyo <mendez4a@gmail.com> (https://github.com/pablomendezroyo",
+    "dsimog <diego@dappnode.io> (https://github.com/dsimog01)"
+  ],
+  "categories": ["Blockchain", "ETH2.0"],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dappnode/DAppNodePackage-web3signer-prater.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dappnode/DAppNodePackage-web3signer-prater/issues"
+  },
+  "links": {
+    "ui": "http://brain.web3signer-prater.dappnode",
+    "homepage": "https://docs.web3signer.consensys.net/en/latest/",
+    "readme": "https://github.com/ConsenSys/web3signer/blob/master/README.md"
+  },
+  "license": "Apache-2.0",
+  "requirements": {
+    "minimumDappnodeVersion": "0.2.67"
+  },
+  "globalEnvs": [
+    {
+      "envs": [
+        "CONSENSUS_CLIENT_PRATER",
+        "EXECUTION_CLIENT_PRATER",
+        "FEE_RECIPIENT_PRATER"
+      ],
+      "services": ["brain"]
+    },
+    {
+      "envs": ["CONSENSUS_CLIENT_PRATER"],
+      "services": ["web3signer"]
+    }
+  ],
+  "backup": [
+    {
+      "name": "keystores",
+      "path": "/data/keyfiles",
+      "service": "web3signer"
+    },
+    {
+      "name": "brain-db",
+      "path": "/app/data/brain-db.json",
+      "service": "brain"
+    }
+  ]
+}
