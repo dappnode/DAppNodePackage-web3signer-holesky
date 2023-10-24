@@ -1,6 +1,6 @@
 <!-- :female_detective: Looking for a new champion -->
 
-# DAppNode Package _Web3signer-Prater_
+# DAppNode Package _Web3signer-Holesky_
 
 <!--DAppNode package logo (could be added with an hyperlink to a youtube video): -->
 
@@ -22,13 +22,13 @@ Client diversity is a key benefit of DAppNode, with our implementation of Consen
 
 ### Requirements
 
-Rquirements to run The DAppNode Web3Signer-Prater
+Rquirements to run The DAppNode Web3Signer-Holesky
 
 <!--Requirements to run the Dappnode package in a list: -->
 
-- **Validator**: Set up your validator at https://prater.launchpad.ethereum.org/
+- **Validator**: Set up your validator at https://holesky.launchpad.ethereum.org/
 - **Execution Layer Client**: You need to have installed and synced an EL client such as Göerli Geth, Göerli Nethermind, Göerli Erigon, or Göerli Besu
-- **Consensus Layer Client**: You need to have installed and synced a CL client such as Prysm Prater, Lighthouse Prater, Lodestar Prater, Nimbus Prater, or Teku Prater
+- **Consensus Layer Client**: You need to have installed and synced a CL client such as Prysm Holesky, Lighthouse Holesky, Lodestar Holesky, Nimbus Holesky, or Teku Holesky
 
 ### Manteinance
 

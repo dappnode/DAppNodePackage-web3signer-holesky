@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   brain:
-    image: "brain.web3signer-prater.dnp.dappnode.eth:0.1.13"
+    image: "brain.web3signer-holesky.dnp.dappnode.eth:0.1.13"
     build:
       context: brain
     environment:
@@ -10,10 +10,10 @@ services:
     volumes:
       - "brain_data:/app/data"
   web3signer:
-    image: "web3signer.web3signer-prater.dnp.dappnode.eth:0.1.13"
+    image: "web3signer.web3signer-holesky.dnp.dappnode.eth:0.1.13"
     healthcheck:
       test: >-
-        curl -H 'Host: web3signer.web3signer-prater.dappnode'
+        curl -H 'Host: web3signer.web3signer-holesky.dappnode'
         http://localhost:9000/healthcheck
       interval: 5s
       timeout: 5s
@@ -42,10 +42,10 @@ services:
     depends_on:
       postgres:
         condition: service_started
-    image: "flyway.web3signer-prater.dnp.dappnode.eth:0.1.13"
+    image: "flyway.web3signer-holesky.dnp.dappnode.eth:0.1.13"
     restart: on-failure
   postgres:
-    image: "postgres.web3signer-prater.dnp.dappnode.eth:0.1.13"
+    image: "postgres.web3signer-holesky.dnp.dappnode.eth:0.1.13"
     build:
       context: postgres
       dockerfile: Dockerfile
