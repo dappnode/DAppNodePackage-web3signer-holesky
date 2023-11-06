@@ -27,7 +27,7 @@ Rquirements to run The DAppNode Web3Signer-Holesky
 <!--Requirements to run the Dappnode package in a list: -->
 
 - **Validator**: Set up your validator at https://holesky.launchpad.ethereum.org/
-- **Execution Layer Client**: You need to have installed and synced an EL client such as Göerli Geth, Göerli Nethermind, Göerli Erigon, or Göerli Besu
+- **Execution Layer Client**: You need to have installed and synced an EL client such as Holesky Geth, Holesky Nethermind, Holesky Erigon, or Holesky Besu
 - **Consensus Layer Client**: You need to have installed and synced a CL client such as Prysm Holesky, Lighthouse Holesky, Lodestar Holesky, Nimbus Holesky, or Teku Holesky
 
 ### Manteinance
