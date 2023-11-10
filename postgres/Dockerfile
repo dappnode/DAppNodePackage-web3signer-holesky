@@ -32,4 +32,6 @@ COPY --from=postgres-migrations /usr/src/app/web3signer-${UPSTREAM_VERSION}/slas
 
 RUN /usr/local/bin/rename_files.sh
 
+USER postgres
+
 CMD ["postgres"]
