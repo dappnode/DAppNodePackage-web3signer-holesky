@@ -33,11 +33,7 @@
   },
   "globalEnvs": [
     {
-      "envs": [
-        "CONSENSUS_CLIENT_HOLESKY",
-        "EXECUTION_CLIENT_HOLESKY",
-        "FEE_RECIPIENT_HOLESKY"
-      ],
+      "envs": ["CONSENSUS_CLIENT_HOLESKY", "EXECUTION_CLIENT_HOLESKY"],
       "services": ["brain"]
     },
     {
