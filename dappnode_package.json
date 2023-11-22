@@ -29,14 +29,11 @@
   },
   "license": "Apache-2.0",
   "requirements": {
-    "minimumDappnodeVersion": "0.2.84"
+    "minimumDappnodeVersion": "0.2.83"
   },
   "globalEnvs": [
     {
-      "envs": [
-        "CONSENSUS_CLIENT_HOLESKY",
-        "EXECUTION_CLIENT_HOLESKY"
-      ],
+      "envs": ["CONSENSUS_CLIENT_HOLESKY", "EXECUTION_CLIENT_HOLESKY"],
       "services": ["brain"]
     },
     {
