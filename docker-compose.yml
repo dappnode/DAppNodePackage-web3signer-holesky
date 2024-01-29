@@ -24,7 +24,7 @@ services:
     build:
       context: web3signer
       args:
-        UPSTREAM_VERSION: 23.11.0
+        UPSTREAM_VERSION: 24.1.1
     environment:
       JAVA_OPTS: "-Xmx6g"
       EXTRA_OPTS: ""
@@ -35,7 +35,7 @@ services:
     build:
       context: flyway
       args:
-        UPSTREAM_VERSION: 23.11.0
+        UPSTREAM_VERSION: 24.1.1
     depends_on:
       postgres:
         condition: service_started
@@ -45,7 +45,7 @@ services:
     build:
       context: postgres
       args:
-        UPSTREAM_VERSION: 23.11.0
+        UPSTREAM_VERSION: 24.1.1
     user: postgres
     volumes:
       - "postgres_data:/var/lib/postgresql/data"
