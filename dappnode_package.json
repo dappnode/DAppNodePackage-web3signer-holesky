@@ -1,7 +1,7 @@
 {
   "name": "web3signer-holesky.dnp.dappnode.eth",
-  "version": "0.1.2",
-  "upstreamVersion": "24.1.1",
+  "version": "0.1.3",
+  "upstreamVersion": "24.2.0",
   "architectures": ["linux/amd64"],
   "upstreamRepo": "ConsenSys/web3signer",
   "mainService": "web3signer",
