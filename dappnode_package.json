@@ -1,9 +1,24 @@
 {
   "name": "web3signer-holesky.dnp.dappnode.eth",
   "version": "0.1.3",
-  "upstreamVersion": "24.2.0",
+  "upstream": [
+    {
+      "repo": "ConsenSys/web3signer",
+      "version": "v24.2.0",
+      "arg": "WEB3SIGNER_VERSION"
+    },
+    {
+      "repo": "flyway/flyway",
+      "version": "flyway-9.16.1",
+      "arg": "FLYWAY_VERSION"
+    },
+    {
+      "repo": "dappnode/StakingBrain",
+      "version": "0.1.17",
+      "arg": "BRAIN_VERSION"
+    }
+  ],
   "architectures": ["linux/amd64"],
-  "upstreamRepo": "ConsenSys/web3signer",
   "mainService": "web3signer",
   "shortDescription": "Remote signer + slashing protection database + User interface to import validator keystores",
   "description": "Web3Signer is an open-source signing service developed under the Apache 2.0 license and written in Java. Web3Signer is capable of signing on multiple platforms using private keys stored in an external vault, or encrypted on a disk.",

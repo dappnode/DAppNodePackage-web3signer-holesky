@@ -1,2 +1,3 @@
-FROM ghcr.io/dappnode/staking-brain:0.1.17
+ARG BRAIN_VERSION
+FROM ghcr.io/dappnode/staking-brain:${BRAIN_VERSION}
 ENV NETWORK=holesky
