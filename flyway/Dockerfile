@@ -1,3 +1,4 @@
+ARG FLYWAY_VERSION
 ##############
 # MIGRATIONS #
 ##############
