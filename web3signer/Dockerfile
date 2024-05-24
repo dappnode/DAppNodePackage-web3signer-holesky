@@ -1,6 +1,6 @@
-ARG UPSTREAM_VERSION
+ARG WEB3SIGNER_VERSION
 
-FROM consensys/web3signer:$UPSTREAM_VERSION
+FROM consensys/web3signer:$WEB3SIGNER_VERSION
 USER root
 RUN apt update && apt install ca-certificates --yes
 

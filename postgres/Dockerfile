@@ -2,23 +2,23 @@
 # MIGRATIONS #
 ##############
 FROM alpine:3.15.10 as postgres-migrations
-ARG UPSTREAM_VERSION
+ARG WEB3SIGNER_VERSION
 WORKDIR /usr/src/app
 
 # Install wget and other dependencies, if necessary
 RUN apk --no-cache add wget
 
 # Get migrations from ConsenSys web3signer repository
-RUN wget -q https://github.com/ConsenSys/web3signer/archive/refs/tags/${UPSTREAM_VERSION}.tar.gz && \
-    tar -xvf ${UPSTREAM_VERSION}.tar.gz && \
-    rm ${UPSTREAM_VERSION}.tar.gz
+RUN wget -q https://github.com/ConsenSys/web3signer/archive/refs/tags/${WEB3SIGNER_VERSION}.tar.gz && \
+    tar -xvf ${WEB3SIGNER_VERSION}.tar.gz && \
+    rm ${WEB3SIGNER_VERSION}.tar.gz
 
 ############
 # POSTGRES #
 ############
 FROM postgres:14.1-alpine3.15
 
-ARG UPSTREAM_VERSION
+ARG WEB3SIGNER_VERSION
 
 ENV POSTGRES_PASSWORD=password \
     PGPASSWORD=password \
@@ -28,7 +28,7 @@ ENV POSTGRES_PASSWORD=password \
 
 COPY rename_files.sh /usr/local/bin/rename_files.sh
 
-COPY --from=postgres-migrations /usr/src/app/web3signer-${UPSTREAM_VERSION}/slashing-protection/src/main/resources/migrations/postgresql/* ${INITDB_DIR}
+COPY --from=postgres-migrations /usr/src/app/web3signer-${WEB3SIGNER_VERSION}/slashing-protection/src/main/resources/migrations/postgresql/* ${INITDB_DIR}
 
 RUN /usr/local/bin/rename_files.sh
 

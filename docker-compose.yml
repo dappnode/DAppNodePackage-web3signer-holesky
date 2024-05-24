@@ -3,6 +3,8 @@ services:
   brain:
     build:
       context: brain
+      args:
+        BRAIN_VERSION: 0.1.17
     environment:
       - LOG_LEVEL=debug
     restart: unless-stopped
@@ -24,7 +26,7 @@ services:
     build:
       context: web3signer
       args:
-        UPSTREAM_VERSION: 24.2.0
+        WEB3SIGNER_VERSION: 24.2.0
     environment:
       JAVA_OPTS: "-Xmx6g"
       EXTRA_OPTS: ""
@@ -36,7 +38,8 @@ services:
     build:
       context: flyway
       args:
-        UPSTREAM_VERSION: 24.2.0
+        WEB3SIGNER_VERSION: 24.2.0
+        FLYWAY_VERSION: 9.16.1
     depends_on:
       postgres:
         condition: service_started
@@ -46,7 +49,7 @@ services:
     build:
       context: postgres
       args:
-        UPSTREAM_VERSION: 24.2.0
+        WEB3SIGNER_VERSION: 24.2.0
     user: postgres
     volumes:
       - "postgres_data:/var/lib/postgresql/data"
