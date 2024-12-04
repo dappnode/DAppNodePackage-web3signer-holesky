@@ -8,38 +8,18 @@ export WEB3SIGNER_API="http://web3signer.web3signer-${NETWORK}.dappnode:9000"
 case "$_DAPPNODE_GLOBAL_CONSENSUS_CLIENT_HOLESKY" in
 "prysm-holesky.dnp.dappnode.eth")
   ETH2_CLIENT_DNS="validator.prysm-holesky.dappnode"
-  export BEACON_NODE_API="http://beacon-chain.prysm-holesky.dappnode:3500"
-  export CLIENT_API="http://validator.prysm-holesky.dappnode:3500"
-  export TOKEN_FILE="/security/prysm/auth-token"
-  export CLIENTS_TO_REMOVE=(teku lighthouse lodestar nimbus)
   ;;
 "teku-holesky.dnp.dappnode.eth")
   ETH2_CLIENT_DNS="validator.teku-holesky.dappnode"
-  export BEACON_NODE_API="http://beacon-chain.teku-holesky.dappnode:3500"
-  export CLIENT_API="https://validator.teku-holesky.dappnode:3500"
-  export TOKEN_FILE="/security/teku/validator-api-bearer"
-  export CLIENTS_TO_REMOVE=(prysm lighthouse lodestar nimbus)
   ;;
 "lighthouse-holesky.dnp.dappnode.eth")
   ETH2_CLIENT_DNS="validator.lighthouse-holesky.dappnode"
-  export BEACON_NODE_API="http://beacon-chain.lighthouse-holesky.dappnode:3500"
-  export CLIENT_API="http://validator.lighthouse-holesky.dappnode:3500"
-  export TOKEN_FILE="/security/lighthouse/api-token.txt"
-  export CLIENTS_TO_REMOVE=(teku prysm lodestar nimbus)
   ;;
 "nimbus-holesky.dnp.dappnode.eth")
   ETH2_CLIENT_DNS="beacon-validator.nimbus-holesky.dappnode"
-  export BEACON_NODE_API="http://beacon-validator.nimbus-holesky.dappnode:4500"
-  export CLIENT_API="http://beacon-validator.nimbus-holesky.dappnode:3500"
-  export TOKEN_FILE="/security/nimbus/auth-token"
-  export CLIENTS_TO_REMOVE=(teku lighthouse lodestar prysm)
   ;;
 "lodestar-holesky.dnp.dappnode.eth")
   ETH2_CLIENT_DNS="validator.lodestar-holesky.dappnode"
-  export BEACON_NODE_API="http://beacon-chain.lodestar-holesky.dappnode:3500"
-  export CLIENT_API="http://validator.lodestar-holesky.dappnode:3500"
-  export TOKEN_FILE="/security/lodestar/api-token.txt"
-  export CLIENTS_TO_REMOVE=(teku lighthouse prsym nimbus)
   ;;
 *)
   echo "_DAPPNODE_GLOBAL_CONSENSUS_CLIENT_HOLESKY env is not set properly"
@@ -68,7 +48,7 @@ exec /opt/web3signer/bin/web3signer \
   --metrics-host-allowlist="*" \
   --idle-connection-timeout-seconds=900 \
   eth2 \
-  --network=holesky \
+  --network=${NETWORK} \
   --slashing-protection-db-url=jdbc:postgresql://postgres.web3signer-holesky.dappnode:5432/web3signer \
   --slashing-protection-db-username=postgres \
   --slashing-protection-db-password=password \
